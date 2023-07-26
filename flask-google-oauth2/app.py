@@ -1,4 +1,4 @@
-# AS simeple as possbile flask google oAuth 2.0
+# As simple as possbile flask google oAuth 2.0
 from flask import Flask, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 import os
@@ -53,13 +53,13 @@ def login():
 def authorize():
     google = oauth.create_client('google')  # create the google oauth client
     token = google.authorize_access_token()  # Access token from google (needed to get user info)
-    resp = google.get('userinfo')  # userinfo contains stuff u specificed in the scrope
+    resp = google.get('userinfo')  # userinfo contains stuff you specified in the scope
     user_info = resp.json()
     user = oauth.google.userinfo()  # uses openid endpoint to fetch user info
-    # Here you use the profile/user data that you got and query your database find/register the user
-    # and set ur own data in the session not the profile from google
+    # Here you use the profile/user data that you got and query your database to find/register the user
+    # and set your own data in the session not the profile from google
     session['profile'] = user_info
-    session.permanent = True  # make the session permanant so it keeps existing after broweser gets closed
+    session.permanent = True  # make the session permanent so that it keeps existing after browser gets closed
     return redirect('/')
 
 
